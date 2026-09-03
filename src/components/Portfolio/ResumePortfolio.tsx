@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import headshot from '@/assets/nate_headshot.png';
 import GalaxyBackground from './GalaxyBackground';
 import ProjectsSection from './ProjectsSection';
+import { ContactSection } from '@/components/ui/contact';
 import styles from './portfolio.module.css';
 
 const capabilities = ['React development', 'JavaScript (ES6+)', 'HTML5 & CSS3', 'Responsive interfaces', 'Operations management', 'Team leadership', 'Problem solving', 'Process improvement'];
@@ -41,7 +42,7 @@ export default function ResumePortfolio() {
       <a href='#top' className={styles.mark} aria-label='Nate Tillman, back to top'>N<span>.</span></a>
       <button className={styles.menuButton} onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls='portfolio-navigation' aria-label='Toggle navigation'><span/><span/></button>
       <nav id='portfolio-navigation' aria-label='Portfolio navigation' className={menuOpen ? styles.menuOpen : ''}>
-        <a href='#about' onClick={closeMenu}>About</a><a href='#experience' onClick={closeMenu}>Experience</a><a href='#projects' onClick={closeMenu}>Projects</a><a href='#contact' onClick={closeMenu}>Contact</a>
+        <a href='#about' onClick={closeMenu}>About</a><a href='#experience' onClick={closeMenu}>Experience</a><a href='#projects' onClick={closeMenu}>Projects</a><a href='#contact-form' onClick={closeMenu}>Contact</a>
       </nav><span className={styles.availability}><i aria-hidden='true'/> Available for opportunities</span>
     </header>
     <section className={styles.hero} id='top'>
@@ -51,6 +52,7 @@ export default function ResumePortfolio() {
     <section className={styles.statement} id='about'><p className={styles.sectionNumber} data-reveal>01 / About</p><div data-reveal><h2>Leadership built<br/>through <em>service.</em></h2><div className={styles.aboutGrid}><p>For 15 years, I led personnel, protected critical assets, and supported deployment operations where preparation, accountability, and clear communication are non-negotiable. My experience spans operations supervision, logistics, safety, Equal Opportunity programs, and workforce development.</p><p>Today, I pair that military leadership foundation with front-end development skills in HTML5, CSS3, JavaScript, and React. I bring the same disciplined approach to technology: understand the mission, build with purpose, test the details, and deliver something people can rely on.</p></div><div className={styles.capabilities}>{capabilities.map((item,i)=><span key={item} data-card><b>0{i+1}</b>{item}</span>)}</div></div></section>
     <section className={styles.work} id='experience'><div className={styles.workHeader} data-reveal><p className={styles.sectionNumber}>02 / Experience</p><h2>A record of<br/><em>moving things forward.</em></h2></div><div className={styles.timeline}>{experience.map((item)=><article key={item.index} data-card><span>{item.index}</span><div><p>{item.meta}</p><h3>{item.title}</h3></div><p>{item.copy}</p><i aria-hidden='true'>↗</i></article>)}</div><div className={styles.resumeNote}>Technical credentials: Certified React + JSX Professional Developer · Certified JavaScript Professional Developer · Certified HTML/CSS Web Designer · CoITB, 2026–2029. Education: Gage Park High School Diploma and Joint Services Transcript coursework.</div></section>
     <ProjectsSection/>
+    <div id='contact-form' className={styles.contactForm} data-reveal><ContactSection/></div>
     <section className={styles.contact} id='contact'><p className={styles.sectionNumber} data-reveal>04 / Contact</p><div data-reveal><p className={styles.eyebrow}>Have something in mind?</p><h2>Let’s make<br/>it <em>matter.</em></h2><a href='mailto:tillmanlafa26@gmail.com'>tillmanlafa26@gmail.com <span aria-hidden='true'>↗</span></a><a href='tel:+19106275473'>910 627 5473 <span aria-hidden='true'>↗</span></a></div><footer><span>© {new Date().getFullYear()} Nate Tillman</span><span>Hinesville, GA</span><a href='#top'>Back to top ↑</a></footer></section>
   </main>;
 }

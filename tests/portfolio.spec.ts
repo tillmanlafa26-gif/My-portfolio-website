@@ -39,3 +39,14 @@ test('reduced motion leaves content visible and background static', async ({ pag
   await expect(page.locator('article').first()).toBeVisible();
   expect(await page.locator('html').evaluate((el) => getComputedStyle(el).scrollBehavior)).toBe('auto');
 });
+
+test('contact form is accessible and submits', async ({ page }) => {
+  await page.goto('http://127.0.0.1:3000', { waitUntil: 'networkidle' });
+  await page.locator('#contact-form').scrollIntoViewIfNeeded();
+  await page.getByLabel('Your name').fill('Portfolio Visitor');
+  await page.getByLabel('Email').fill('visitor@example.com');
+  await page.getByLabel('Briefly describe your project').fill('A responsive website project.');
+  await page.getByLabel('Website').click();
+  await page.getByRole('button', { name: /send a message/i }).click();
+  await expect(page.getByRole('status')).toContainText('Thanks');
+});

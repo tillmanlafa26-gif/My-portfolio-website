@@ -1,0 +1,23 @@
+'use client';
+import React from 'react';
+import { BriefcaseBusiness as Linkedin, Code2 as Github, Send } from 'lucide-react';
+import { Button } from './button'; import { Input } from './input'; import { Textarea } from './textarea'; import { Label } from './label'; import { Checkbox } from './checkbox';
+
+type ContactData={name:string;email:string;message:string;projectType:string[]};
+export interface ContactSectionProps{title?:string;mainMessage?:string;contactEmail?:string;onSubmit?:(data:ContactData)=>void}
+const options=['Website','Web App','E-Commerce','Portfolio','UI refresh','Other'];
+const bubbles=Array.from({length:12},(_,i)=>({left:`${(i*37+11)%96}%`,size:10+(i*13)%22,delay:`-${(i*1.7).toFixed(1)}s`,duration:`${13+(i*3)%12}s`}));
+
+export function ContactSection({title='Let’s build something meaningful together.',mainMessage='Tell me about your next project.',contactEmail='tillmanlafa26@gmail.com',onSubmit}:ContactSectionProps){
+ const [data,setData]=React.useState<ContactData>({name:'',email:'',message:'',projectType:[]}); const [sent,setSent]=React.useState(false);
+ const submit=(e:React.FormEvent)=>{e.preventDefault();onSubmit?.(data);setSent(true)};
+ const toggle=(type:string,checked:boolean)=>setData(p=>({...p,projectType:checked?[...p.projectType,type]:p.projectType.filter(x=>x!==type)}));
+ return <section className='relative overflow-hidden rounded-[28px] border border-white/10 bg-[#08091a]/90 p-5 shadow-2xl backdrop-blur-xl md:p-10 lg:p-14'>
+  <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(111,83,255,.22),transparent_36%),radial-gradient(circle_at_85%_75%,rgba(255,116,94,.16),transparent_34%)]'/>
+  <div className='pointer-events-none absolute inset-0 overflow-hidden' aria-hidden='true'>{bubbles.map((b,i)=><i key={i} className='contact-bubble absolute bottom-[-40px] rounded-full border border-white/15 bg-white/5' style={{left:b.left,width:b.size,height:b.size,animationDelay:b.delay,animationDuration:b.duration}}/>)}</div>
+  <div className='relative grid gap-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-16'>
+   <div className='flex flex-col justify-between'><div><p className='mb-5 font-mono text-[10px] uppercase tracking-[.2em] text-[#ff745e]'>04 / Contact</p><h2 className='max-w-xl text-4xl leading-[.95] tracking-[-.05em] text-white md:text-6xl lg:text-7xl'>{title}</h2></div><div className='mt-10'><p className='mb-3 text-sm text-white/50'>Prefer email?</p><a className='break-all text-lg text-white underline decoration-[#ff745e] underline-offset-8' href={`mailto:${contactEmail}`}>{contactEmail}</a><div className='mt-8 flex gap-3'><Button variant='outline' size='icon' asChild><a href='https://www.linkedin.com' target='_blank' rel='noreferrer' aria-label='LinkedIn'><Linkedin className='h-4 w-4'/></a></Button><Button variant='outline' size='icon' asChild><a href='https://github.com' target='_blank' rel='noreferrer' aria-label='GitHub'><Github className='h-4 w-4'/></a></Button></div></div></div>
+   <div className='rounded-3xl border border-white/10 bg-white/[.045] p-5 md:p-8'><h3 className='mb-7 text-2xl font-semibold text-white'>{mainMessage}</h3>{sent?<div role='status' className='rounded-2xl border border-[#ff745e]/30 bg-[#ff745e]/10 p-6 text-white'>Thanks — your message is ready. I’ll be in touch soon.</div>:<form onSubmit={submit} className='space-y-6'><div className='grid gap-4 md:grid-cols-2'><div className='space-y-2'><Label htmlFor='contact-name'>Your name</Label><Input id='contact-name' required value={data.name} onChange={e=>setData({...data,name:e.target.value})}/></div><div className='space-y-2'><Label htmlFor='contact-email'>Email</Label><Input id='contact-email' type='email' required value={data.email} onChange={e=>setData({...data,email:e.target.value})}/></div></div><div className='space-y-2'><Label htmlFor='contact-message'>Briefly describe your project</Label><Textarea id='contact-message' required value={data.message} onChange={e=>setData({...data,message:e.target.value})}/></div><fieldset><legend className='mb-3 text-sm text-white/65'>I’m looking for…</legend><div className='grid grid-cols-2 gap-3 sm:grid-cols-3'>{options.map(o=>{const id=`project-${o.toLowerCase().replace(/\W+/g,'-')}`;return <div key={o} className='flex items-center gap-2'><Checkbox id={id} checked={data.projectType.includes(o)} onCheckedChange={v=>toggle(o,v===true)}/><Label htmlFor={id} className='font-normal text-white/70'>{o}</Label></div>})}</div></fieldset><Button type='submit' className='w-full gap-2'>Send a message <Send className='h-4 w-4'/></Button></form>}</div>
+  </div>
+ </section>
+}

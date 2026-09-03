@@ -48,3 +48,8 @@
 @media(max-width:800px){.statement,.work,.projects,.contact{border-radius:22px;margin:14px 10px;padding:84px 6vw}.menuButton{width:44px;height:44px;padding:9px}.nav nav{border-radius:0 0 18px 18px;background:rgba(5,6,19,.96)}.projectsHeading{grid-template-columns:1fr;align-items:start}.projectsIntro{grid-column:1}.projectsGrid{grid-template-columns:1fr}.projectCard:last-child{grid-column:auto}.projectPreview{min-height:220px}.timeline article{padding:22px}.timeline article:hover{padding-left:22px}.portraitWrap{width:min(72vw,340px)}.portraitLabel{right:5px}.contact>div>a{overflow-wrap:anywhere}}
 @media(max-width:480px){.hero{padding-inline:7vw}.heroActions{align-items:stretch;flex-direction:column;gap:18px}.primary{justify-content:space-between}.contact>div>a{font-size:17px}.projectsHeading h2{font-size:2.75rem}.projectPreview{padding:22px}}
 @media(prefers-reduced-motion:reduce){.page *{scroll-behavior:auto!important}.projectCard{will-change:auto}}
+.contactForm{position:relative;z-index:3;scroll-margin-top:100px;margin:24px 2vw}
+@keyframes contactBubble{0%{transform:translate3d(0,30px,0) scale(.65);opacity:0}25%{opacity:.55}100%{transform:translate3d(28px,-680px,0) scale(1.2);opacity:0}}
+:global(.contact-bubble){animation-name:contactBubble;animation-timing-function:linear;animation-iteration-count:infinite}
+@media(max-width:800px){.contactForm{margin:14px 10px}}
+@media(prefers-reduced-motion:reduce){:global(.contact-bubble){animation:none;opacity:.2}}
