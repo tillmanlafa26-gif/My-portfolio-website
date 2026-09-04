@@ -53,3 +53,6 @@
 :global(.contact-bubble){ animation-name:contactBubble; animation-timing-function:linear; animation-iteration-count:infinite }
 @media(max-width:800px) {.contactForm{ margin:14px 10px } }
 @media(prefers-reduced-motion:reduce) {:global(.contact-bubble){ animation:none; opacity:.2 } }
+
+.siteFooter{ position:relative; z-index:3; display:flex; justify-content:space-between; gap:18px; margin:0 2vw; padding:28px 5vw 34px; border-top:1px solid rgba(255, 255, 255, .12); color:rgba(247, 244, 255, .58); font:400 9px 'DM Mono', monospace; text-transform:uppercase; letter-spacing:.1em }
+@media(max-width:480px){.siteFooter{ flex-direction:column; padding-inline:6vw }}
