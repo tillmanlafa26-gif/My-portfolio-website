@@ -1,5 +1,5 @@
 const integrations = {
-  isSanityEnabled: true,
+  isSanityEnabled: Boolean(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID),
   isStripeEnabled: true,
   isOpenAIEnabled: true,
   isMailchimpEnabled: true,
