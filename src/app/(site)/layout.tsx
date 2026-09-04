@@ -27,9 +27,7 @@ export default function RootLayout({
   return (
     <html lang='en' className={plusJakarta.className}>
       <body>
-        <div className='isolate'>
-          {children}
-        </div>
+        <div className='isolate'>{children}</div>
 
         <ScrollToTop />
       </body>
