@@ -6,6 +6,7 @@ export type PortfolioProject = {
   technologies: string[];
   liveUrl?: string;
   sourceUrl?: string;
+  previewImage?: string;
   accent: string;
   secondaryAccent: string;
   previewLabel: string;
@@ -16,16 +17,16 @@ export type PortfolioProject = {
 export const projects: PortfolioProject[] = [
   {
     index: '01',
-    title: 'Mission Control Dashboard',
+    title: 'The Beans Place',
     eyebrow: 'Featured build',
     description:
-      'A responsive operations workspace that turns complex activity into a clear, focused view for fast decision-making.',
-    technologies: ['React', 'TypeScript', 'Responsive UI'],
-    liveUrl: '#',
-    sourceUrl: '#',
-    accent: '#f1884b',
-    secondaryAccent: '#6e78ff',
-    previewLabel: 'Operations dashboard interface',
+      'A warm, editorial coffee storefront for browsing premium beans and discovering a better daily brew.',
+    technologies: ['Next.js', 'E-commerce', 'Responsive UI'],
+    liveUrl: 'https://the-beans-place-nu.vercel.app/',
+    previewImage: 'https://image.thum.io/get/width/1200/crop/800/https://the-beans-place-nu.vercel.app/',
+    accent: '#c98f62',
+    secondaryAccent: '#f2dfc7',
+    previewLabel: 'The Beans Place storefront',
   },
   {
     index: '02',

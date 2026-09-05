@@ -77,7 +77,7 @@ function ProjectCard({ project }: ProjectCardProps) {
     >
       <div className={styles.projectPreview} aria-hidden='true'>
         <div className={styles.projectGlow} />
-        <div className={styles.projectBrowser}>
+        {project.previewImage ? <img className={styles.projectPreviewImage} src={project.previewImage} alt="" /> : <div className={styles.projectBrowser}>
           <span />
           <span />
           <span />
@@ -88,7 +88,7 @@ function ProjectCard({ project }: ProjectCardProps) {
             <i />
             <i />
           </div>
-        </div>
+        </div>}
         <span className={styles.projectPreviewLabel}>{project.previewLabel}</span>
       </div>
 
